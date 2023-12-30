@@ -1,19 +1,15 @@
 import keyboard
-import pyautogui
 
 # Initialize variables
 binary_sequence = ""
 CHARACTER_LENGTH = 8
 
-# Function to convert binary to ASCII and type it
-def convert_and_type(binary_sequence):
+# Function to convert binary to ASCII and print the result
+def convert_and_print(binary_sequence):
     try:
         # Convert binary to ASCII
         char_code = int(binary_sequence, 2)
         character = chr(char_code)
-
-        # Type the character at the current cursor position
-        pyautogui.typewrite(character)
 
         # Print the conversion result
         print(f"Converted: {character}   Binary Sequence: {binary_sequence}")
@@ -37,13 +33,10 @@ while True:
 
                 # Check if the binary sequence is complete
                 if len(binary_sequence) == CHARACTER_LENGTH:
-                    convert_and_type(binary_sequence)
+                    convert_and_print(binary_sequence)
 
                     # Reset the binary sequence after every 8 bits
                     binary_sequence = ""
-
-            # Clear the keyboard buffer
-            keyboard.read_event(suppress=True)
 
     except keyboard.KeyboardInterrupt:
         break
